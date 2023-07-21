@@ -13,10 +13,6 @@ router.post('/', (req, res) => {
 	res.send('Create User');
 });
 
-//! make sure to put static req bove dynamic req in order to not disrupt reading flow of the code
-
-//* now since express is smart, hey chained together all these similar req -- this way you can chain on the get,put,delete
-
 router
 	.route('/:id')
 	.get((req, res) => {
