@@ -6,11 +6,21 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-	res.send('User New Form');
+	res.render('users/new', { firstName: 'test' });
+	// res.send('User New Form');
 });
 
 router.post('/', (req, res) => {
-	res.send('Create User');
+	const isValid = true;
+	if (isValid) {
+		users.push({ firstName: req.body.firstName });
+		res.redirect(`/users/${users.length - 1}`);
+	} else {
+		console.log('ERROR creating new user');
+		res.render('users/new', { firstName: req.body.firstName });
+	}
+	console.log('hi', req.body.firstName);
+	res.send('Hi');
 });
 
 router
